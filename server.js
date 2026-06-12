@@ -7,7 +7,8 @@ dotenv.config();
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(express.static('public'));
+const path = require('path');
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.post('/generate', async (req, res) => {
   const { type, bookTitle, genre, keywords } = req.body;
